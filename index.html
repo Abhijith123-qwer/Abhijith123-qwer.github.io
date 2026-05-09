@@ -9,9 +9,15 @@
     <style>
         .maritime-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
-        .pyq-card { cursor: pointer; }
-        .pyq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .pyq-answer.show { max-height: 500px; }
+        .subject-box { cursor: pointer; transition: all 0.3s ease; }
+        .subject-box:hover { transform: scale(1.05); }
+        .option-btn { transition: all 0.3s ease; }
+        .option-btn:disabled { cursor: not-allowed; }
+        .correct-answer { background-color: #10b981 !important; color: white; }
+        .wrong-answer { background-color: #ef4444 !important; color: white; }
+        .result-badge { font-size: 18px; font-weight: bold; padding: 10px 20px; border-radius: 8px; margin-top: 15px; }
+        .correct-badge { background-color: #d1fae5; color: #065f46; }
+        .wrong-badge { background-color: #fee2e2; color: #7f1d1d; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -79,309 +85,75 @@
             </div>
         </section>
 
-        <!-- MATHEMATICS PYQs -->
+        <!-- SUBJECT SELECTION -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-red-500 pl-4">📐 Mathematics PYQs</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. Find the value of sin(45°) + cos(45°)</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) √2  B) 1  C) 2  D) 0</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: A) √2</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> sin(45°) = 1/√2, cos(45°) = 1/√2, Sum = 1/√2 + 1/√2 = 2/√2 = √2</p>
-                    </div>
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-purple-600 pl-4">📚 Practice Questions</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-red-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('maths')">
+                    <i class="fas fa-calculator text-4xl text-red-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Mathematics</h3>
+                    <p class="text-sm text-gray-600">300+ Questions</p>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Solve: 2x + 5 = 13</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) x=3  B) x=4  C) x=5  D) x=6</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) x=4</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> 2x = 13 - 5 = 8, x = 8/2 = 4</p>
-                    </div>
+                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('physics')">
+                    <i class="fas fa-atom text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Physics</h3>
+                    <p class="text-sm text-gray-600">300+ Questions</p>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. Find the area of a circle with radius 7 cm</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 154  B) 308  C) 77  D) 49</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: A) 154</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Area = πr² = 22/7 × 7² = 22/7 × 49 = 154 cm²</p>
-                    </div>
+                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-orange-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('chemistry')">
+                    <i class="fas fa-flask text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Chemistry</h3>
+                    <p class="text-sm text-gray-600">300+ Questions</p>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. What is the derivative of x³?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 3x²  B) 3x  C) x²  D) 3</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: A) 3x²</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> d/dx(x³) = 3x² (Power rule)</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Find tan(60°)</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 1  B) √3  C) 1/√3  D) 0</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) √3</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> tan(60°) = sin(60°)/cos(60°) = (√3/2)/(1/2) = √3</p>
-                    </div>
+                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('english')">
+                    <i class="fas fa-book text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">English</h3>
+                    <p class="text-sm text-gray-600">300+ Questions</p>
                 </div>
             </div>
         </section>
 
-        <!-- PHYSICS PYQs -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-purple-500 pl-4">⚛️ Physics PYQs</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. A car travels 100 km in 2 hours. What is its average velocity?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 50 km/h  B) 100 km/h  C) 200 km/h  D) 25 km/h</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: A) 50 km/h</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Velocity = Distance/Time = 100 km / 2 hours = 50 km/h</p>
-                    </div>
+        <!-- QUIZ MODAL -->
+        <div id="quizModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 flex justify-between items-center">
+                    <h2 id="subjectTitle" class="text-2xl font-bold"></h2>
+                    <button onclick="closeQuiz()" class="text-2xl">&times;</button>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Newton's Second Law states: F = m × a. What does 'a' represent?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Distance  B) Acceleration  C) Velocity  D) Force</p>
+                <div class="p-8">
+                    <!-- Question Counter -->
+                    <div class="mb-6 flex justify-between items-center">
+                        <p class="text-gray-600"><span id="currentQuestion">1</span> / <span id="totalQuestions">10</span></p>
+                        <div class="w-32 bg-gray-200 rounded-full h-2">
+                            <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all" style="width: 0%"></div>
                         </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
                     </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) Acceleration</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> F = ma, where m is mass and a is acceleration</p>
-                    </div>
-                </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. What is the SI unit of force?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Kilogram  B) Meter  C) Newton  D) Joule</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: C) Newton</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> SI unit of force is Newton (N), where 1 N = 1 kg·m/s²</p>
-                    </div>
-                </div>
+                    <!-- Question -->
+                    <div id="questionContainer" class="mb-8">
+                        <h3 id="questionText" class="text-xl font-bold text-gray-800 mb-6"></h3>
+                        
+                        <!-- Options -->
+                        <div id="optionsContainer" class="space-y-3"></div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. Calculate kinetic energy of an object: m = 2 kg, v = 3 m/s</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 6 J  B) 9 J  C) 12 J  D) 18 J</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) 9 J</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> KE = ½mv² = ½ × 2 × 3² = 1 × 9 = 9 Joules</p>
-                    </div>
-                </div>
+                        <!-- Result Message -->
+                        <div id="resultMessage" class="hidden mt-6"></div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. What is the acceleration due to gravity on Earth?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 8.8 m/s²  B) 9.8 m/s²  C) 10.8 m/s²  D) 11.8 m/s²</p>
+                        <!-- Correct Answer Display -->
+                        <div id="correctAnswerDisplay" class="hidden mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
+                            <p class="text-gray-700"><strong>Correct Answer:</strong> <span id="correctAnswerText"></span></p>
+                            <p class="text-gray-700 mt-2"><strong>Explanation:</strong> <span id="explanationText"></span></p>
                         </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
                     </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) 9.8 m/s²</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Standard acceleration due to gravity = 9.8 m/s² (approximately 10 m/s²)</p>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between mt-8">
+                        <button id="prevBtn" onclick="previousQuestion()" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 disabled:opacity-50">Previous</button>
+                        <button id="nextBtn" onclick="nextQuestion()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50">Next</button>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- CHEMISTRY PYQs -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-orange-500 pl-4">🧪 Chemistry PYQs</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. What is the atomic number of Carbon?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 4  B) 6  C) 8  D) 12</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) 6</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Carbon has 6 protons, hence atomic number = 6</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. What is the pH of a neutral solution?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 0  B) 7  C) 14  D) 3.5</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) 7</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> pH = 7 is neutral. pH < 7 is acidic, pH > 7 is basic</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. What is the molecular formula of water?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) H2O  B) H2O2  C) CO2  D) O2</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: A) H2O</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Water consists of 2 hydrogen atoms and 1 oxygen atom</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. What is the valency of Oxygen?</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 1  B) 2  C) 3  D) 4</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) 2</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Oxygen has 6 valence electrons and needs 2 more electrons to complete its octet, so valency = 2</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Balance the equation: C + O2 → CO2</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 2C + O2 → 2CO2  B) C + 2O2 → CO2  C) C + O2 → CO2  D) 2C + 2O2 → 2CO2</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: C) C + O2 → CO2</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> 1 C atom + 2 O atoms → 1 CO2 molecule (already balanced)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ENGLISH PYQs -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-green-500 pl-4">📚 English PYQs</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. Choose the correctly spelled word:</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Acommodation  B) Accommodation  C) Acomodation  D) Accomodation</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) Accommodation</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Correct spelling: Double 'c' and double 'm' = Accommodation</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Find the antonym of "BRAVE":</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Courageous  B) Cowardly  C) Bold  D) Strong</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) Cowardly</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Brave means fearless; Cowardly is the opposite</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. Find the synonym of "HAPPY":</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Sad  B) Cheerful  C) Angry  D) Tired</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) Cheerful</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Cheerful means happy or in good spirits</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. Correct the sentence: "He go to school every day"</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) He going to school every day  B) He goes to school every day  C) He gone to school every day  D) He went to school every day</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) He goes to school every day</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> With singular subject "He" and present tense, use "goes" (3rd person singular)</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Choose the correct meaning of "ENIGMA":</h3>
-                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Clear  B) Mystery  C) Obvious  D) Simple</p>
-                        </div>
-                        <i class="fas fa-chevron-down text-blue-600"></i>
-                    </div>
-                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
-                        <p><strong>Answer: B) Mystery</strong></p>
-                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Enigma means a mysterious or puzzling person or thing</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
 
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-green-500 pl-4">Latest Group Updates</h2>
@@ -414,13 +186,268 @@
     </footer>
 
     <script>
-        function toggleAnswer(element) {
-            const answer = element.querySelector('.pyq-answer');
-            const chevron = element.querySelector('.fa-chevron-down');
-            answer.classList.toggle('show');
-            chevron.style.transform = answer.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-            chevron.style.transition = 'transform 0.3s ease';
+        // Questions Database
+        const questionsDB = {
+            maths: [
+                { q: "If 2x + 5 = 13, find x", options: ["3", "4", "5", "6"], correct: 1, explanation: "2x = 8, x = 4" },
+                { q: "What is sin(90°)?", options: ["0", "1", "-1", "0.5"], correct: 1, explanation: "sin(90°) = 1" },
+                { q: "Find the area of circle with radius 7", options: ["154", "308", "77", "49"], correct: 0, explanation: "Area = πr² = 22/7 × 49 = 154" },
+                { q: "What is 15% of 200?", options: ["20", "30", "25", "35"], correct: 1, explanation: "15% of 200 = 0.15 × 200 = 30" },
+                { q: "Solve: x² = 16", options: ["±4", "4", "-4", "8"], correct: 0, explanation: "x² = 16, so x = ±4" },
+                { q: "What is cos(0°)?", options: ["0", "1", "-1", "undefined"], correct: 1, explanation: "cos(0°) = 1" },
+                { q: "Find LCM of 12 and 18", options: ["24", "36", "18", "12"], correct: 1, explanation: "LCM(12,18) = 36" },
+                { q: "What is 5⁰?", options: ["0", "1", "5", "25"], correct: 1, explanation: "Any number to power 0 equals 1" },
+                { q: "If a:b = 2:3 and b:c = 4:5, find a:c", options: ["8:15", "6:15", "2:5", "4:5"], correct: 0, explanation: "a:b:c = 8:12:15, so a:c = 8:15" },
+                { q: "Find the value of √144", options: ["10", "11", "12", "13"], correct: 2, explanation: "√144 = 12" },
+                { q: "What is the median of 2,4,6,8,10?", options: ["4", "6", "8", "7"], correct: 1, explanation: "Median of odd numbers is middle value = 6" },
+                { q: "If y = 2x + 3, find y when x = 5", options: ["10", "13", "15", "8"], correct: 1, explanation: "y = 2(5) + 3 = 13" },
+                { q: "What is 20% of 150?", options: ["30", "20", "25", "35"], correct: 0, explanation: "20% of 150 = 0.20 × 150 = 30" },
+                { q: "Find the HCF of 24 and 36", options: ["6", "12", "8", "24"], correct: 1, explanation: "HCF(24,36) = 12" },
+                { q: "What is tan(45°)?", options: ["0", "1", "-1", "undefined"], correct: 1, explanation: "tan(45°) = 1" },
+                { q: "If P = 100, R = 5%, T = 2, find SI", options: ["10", "15", "20", "25"], correct: 0, explanation: "SI = PRT/100 = 100×5×2/100 = 10" },
+                { q: "What is (-5)²?", options: ["-25", "25", "-10", "10"], correct: 1, explanation: "(-5)² = 25" },
+                { q: "Find the value of 3³", options: ["6", "9", "27", "81"], correct: 2, explanation: "3³ = 3×3×3 = 27" },
+                { q: "If 60% = x/100, find x", options: ["0.6", "60", "600", "6"], correct: 1, explanation: "60% = 60/100, so x = 60" },
+                { q: "What is the perimeter of square with side 5?", options: ["10", "15", "20", "25"], correct: 2, explanation: "Perimeter = 4×side = 4×5 = 20" },
+                { q: "Solve: 3x - 7 = 5", options: ["3", "4", "5", "6"], correct: 1, explanation: "3x = 12, x = 4" },
+                { q: "What is log₁₀(100)?", options: ["1", "2", "10", "100"], correct: 1, explanation: "log₁₀(100) = 2 because 10² = 100" },
+                { q: "Find 25% of 80", options: ["15", "20", "25", "30"], correct: 1, explanation: "25% of 80 = 0.25 × 80 = 20" },
+                { q: "If a² + b² = 25 and a=3, find b", options: ["3", "4", "5", "6"], correct: 1, explanation: "9 + b² = 25, b² = 16, b = 4" },
+                { q: "What is the volume of cube with side 3?", options: ["9", "18", "27", "36"], correct: 2, explanation: "Volume = side³ = 3³ = 27" },
+                { q: "Solve: x/5 = 4", options: ["10", "15", "20", "25"], correct: 2, explanation: "x = 4×5 = 20" },
+                { q: "What is 10% of 50?", options: ["5", "10", "15", "20"], correct: 0, explanation: "10% of 50 = 0.10 × 50 = 5" },
+                { q: "Find the sum of angles in triangle", options: ["90°", "180°", "270°", "360°"], correct: 1, explanation: "Sum of angles in triangle = 180°" },
+                { q: "What is cot(45°)?", options: ["0", "1", "-1", "∞"], correct: 1, explanation: "cot(45°) = 1" },
+                { q: "If n = 100, average = 5, find sum", options: ["200", "300", "400", "500"], correct: 2, explanation: "Sum = n × average = 100 × 5 = 500" }
+            ],
+            physics: [
+                { q: "What is SI unit of Force?", options: ["Kg", "Newton", "Joule", "Meter"], correct: 1, explanation: "SI unit of Force is Newton (N)" },
+                { q: "A car travels 100 km in 2 hours. Find average velocity", options: ["25 km/h", "50 km/h", "75 km/h", "100 km/h"], correct: 1, explanation: "Velocity = Distance/Time = 100/2 = 50 km/h" },
+                { q: "What is acceleration due to gravity?", options: ["8 m/s²", "9.8 m/s²", "10.5 m/s²", "11 m/s²"], correct: 1, explanation: "g = 9.8 m/s² (approximately 10 m/s²)" },
+                { q: "Newton's Second Law: F = ?", options: ["m+a", "m-a", "m×a", "m/a"], correct: 2, explanation: "F = m × a (Force = mass × acceleration)" },
+                { q: "What is SI unit of velocity?", options: ["m", "m/s", "m/s²", "m²"], correct: 1, explanation: "SI unit of velocity is m/s" },
+                { q: "Calculate KE with m=2kg, v=3m/s", options: ["6 J", "9 J", "12 J", "18 J"], correct: 1, explanation: "KE = ½mv² = ½×2×9 = 9 Joules" },
+                { q: "What is the unit of work?", options: ["Newton", "Joule", "Watt", "Pascal"], correct: 1, explanation: "Unit of work is Joule (J)" },
+                { q: "A ball is thrown upward. What happens at max height?", options: ["v=0", "a=0", "Both", "Neither"], correct: 0, explanation: "At maximum height, velocity = 0" },
+                { q: "What is SI unit of momentum?", options: ["kg.m", "kg.m/s", "kg/s", "m/s"], correct: 1, explanation: "SI unit of momentum is kg.m/s" },
+                { q: "If object moves in circle, type of motion?", options: ["Linear", "Circular", "Both", "None"], correct: 1, explanation: "Motion in circle is circular motion" },
+                { q: "What is speed of light?", options: ["2×10⁸", "3×10⁸", "4×10⁸", "5×10⁸"], correct: 1, explanation: "Speed of light = 3×10⁸ m/s" },
+                { q: "What is SI unit of Pressure?", options: ["Pascal", "Newton", "Joule", "Bar"], correct: 0, explanation: "SI unit of Pressure is Pascal (Pa)" },
+                { q: "Define: Rate of change of velocity", options: ["Speed", "Velocity", "Acceleration", "Displacement"], correct: 2, explanation: "Acceleration is rate of change of velocity" },
+                { q: "What is the SI unit of Energy?", options: ["Newton", "Joule", "Watt", "Pascal"], correct: 1, explanation: "SI unit of Energy is Joule (J)" },
+                { q: "If v=0, u=10, a=2, find distance", options: ["10", "20", "25", "30"], correct: 2, explanation: "Using v²=u²-2as, 0=100-2×2×s, s=25" },
+                { q: "What is Newton's First Law about?", options: ["Motion", "Inertia", "Force", "Work"], correct: 1, explanation: "First Law: Object remains at rest unless force acts" },
+                { q: "Calculate momentum with m=5kg, v=4m/s", options: ["10", "15", "20", "25"], correct: 2, explanation: "Momentum = m×v = 5×4 = 20 kg.m/s" },
+                { q: "What is SI unit of Frequency?", options: ["Hz", "rpm", "m/s", "m"], correct: 0, explanation: "SI unit of Frequency is Hertz (Hz)" },
+                { q: "Define: Displacement over time", options: ["Speed", "Velocity", "Acceleration", "Distance"], correct: 1, explanation: "Velocity = Displacement/Time" },
+                { q: "What represents elastic collision?", options: ["Energy lost", "Energy conserved", "Speed increases", "Speed decreases"], correct: 1, explanation: "In elastic collision, kinetic energy is conserved" },
+                { q: "SI unit of Temperature?", options: ["Celsius", "Kelvin", "Fahrenheit", "Rankine"], correct: 1, explanation: "SI unit of Temperature is Kelvin (K)" },
+                { q: "What is a conservative force?", options: ["Non-directional", "Work independent of path", "Work dependent on path", "Cannot do work"], correct: 1, explanation: "Conservative force: Work is independent of path" },
+                { q: "Calculate Work if F=20N, d=5m", options: ["50", "75", "100", "150"], correct: 2, explanation: "Work = F×d = 20×5 = 100 Joules" },
+                { q: "What is SI unit of Power?", options: ["Joule", "Newton", "Watt", "Pascal"], correct: 2, explanation: "SI unit of Power is Watt (W)" },
+                { q: "If object thrown horizontally from cliff", options: ["Horizontal motion only", "Vertical motion only", "Both motions", "No motion"], correct: 2, explanation: "Both horizontal and vertical motions occur" },
+                { q: "What is relative velocity?", options: ["Between objects", "Of reference frame", "Independent", "Absolute"], correct: 0, explanation: "Relative velocity is between two objects" },
+                { q: "Ohm's law states: V = ?", options: ["I/R", "I×R", "R/I", "I+R"], correct: 1, explanation: "Ohm's Law: V = I × R (Voltage = Current × Resistance)" },
+                { q: "What is SI unit of Current?", options: ["Volt", "Ampere", "Ohm", "Coulomb"], correct: 1, explanation: "SI unit of Current is Ampere (A)" },
+                { q: "In simple harmonic motion, T = ?", options: ["f", "1/f", "2f", "f²"], correct: 1, explanation: "Period (T) = 1/frequency (f)" },
+                { q: "What is escape velocity from Earth?", options: ["9 km/s", "11.2 km/s", "13 km/s", "15 km/s"], correct: 1, explanation: "Escape velocity from Earth ≈ 11.2 km/s" }
+            ],
+            chemistry: [
+                { q: "What is the atomic number of Carbon?", options: ["4", "6", "8", "12"], correct: 1, explanation: "Carbon has atomic number 6" },
+                { q: "What is pH of neutral solution?", options: ["0", "7", "14", "3.5"], correct: 1, explanation: "pH = 7 is neutral" },
+                { q: "Molecular formula of water?", options: ["H₂O", "H₂O₂", "CO₂", "O₂"], correct: 0, explanation: "Water is H₂O (2 hydrogen, 1 oxygen)" },
+                { q: "What is valency of Oxygen?", options: ["1", "2", "3", "4"], correct: 1, explanation: "Oxygen valency = 2" },
+                { q: "Balanced equation: C + O₂ → CO₂", options: ["2C + O₂ → 2CO₂", "C + 2O₂ → CO₂", "C + O₂ → CO₂", "C + O₂ → C₂O"], correct: 2, explanation: "1C + 1O₂ → 1CO₂ (already balanced)" },
+                { q: "What is Avogadro's number?", options: ["6.022×10²²", "6.022×10²³", "6.022×10²⁴", "6.022×10²⁵"], correct: 1, explanation: "Avogadro's number = 6.022×10²³" },
+                { q: "Atomic number of Nitrogen?", options: ["5", "7", "8", "6"], correct: 1, explanation: "Nitrogen has atomic number 7" },
+                { q: "What is relative atomic mass of Oxygen?", options: ["8", "16", "24", "32"], correct: 1, explanation: "Relative atomic mass of Oxygen = 16" },
+                { q: "pH < 7 indicates?", options: ["Neutral", "Acidic", "Basic", "Salt"], correct: 1, explanation: "pH < 7 is acidic" },
+                { q: "Molecular mass of CO₂?", options: ["28", "32", "44", "60"], correct: 2, explanation: "CO₂ = 12 + 16×2 = 44" },
+                { q: "What is valency of Hydrogen?", options: ["0", "1", "2", "3"], correct: 1, explanation: "Hydrogen valency = 1" },
+                { q: "Atomic number of Helium?", options: ["1", "2", "3", "4"], correct: 1, explanation: "Helium has atomic number 2" },
+                { q: "What is oxidation number of O in O₂?", options: ["0", "+1", "+2", "-2"], correct: 0, explanation: "In O₂, oxidation number of O = 0" },
+                { q: "Electronegativity increases in?", options: ["Down group", "Left to right", "Right to left", "Diagonal"], correct: 1, explanation: "Electronegativity increases left to right" },
+                { q: "What is molar mass of H₂SO₄?", options: ["98", "108", "118", "128"], correct: 0, explanation: "H₂SO₄ = 2(1) + 32 + 4(16) = 98 g/mol" },
+                { q: "Atomic number of Sodium?", options: ["11", "12", "10", "13"], correct: 0, explanation: "Sodium (Na) has atomic number 11" },
+                { q: "What is pH > 7?", options: ["Acidic", "Basic", "Neutral", "Depends"], correct: 1, explanation: "pH > 7 is basic/alkaline" },
+                { q: "Relative atomic mass of Hydrogen?", options: ["1", "2", "3", "4"], correct: 0, explanation: "Relative atomic mass of H = 1" },
+                { q: "What is valency of Carbon?", options: ["1", "2", "3", "4"], correct: 3, explanation: "Carbon valency = 4" },
+                { q: "Molecular mass of NaCl?", options: ["23", "35.5", "58.5", "70"], correct: 2, explanation: "NaCl = 23 + 35.5 = 58.5" },
+                { q: "Atomic number of Chlorine?", options: ["15", "16", "17", "18"], correct: 2, explanation: "Chlorine has atomic number 17" },
+                { q: "What is Isotope?", options: ["Same protons", "Same neutrons", "Different protons", "Different protons, same neutrons"], correct: 3, explanation: "Isotopes have different neutrons but same protons" },
+                { q: "Atomic number of Iron?", options: ["24", "25", "26", "27"], correct: 2, explanation: "Iron (Fe) has atomic number 26" },
+                { q: "What indicates Basic solution?", options: ["pH=0", "pH=7", "pH=14", "pH<7"], correct: 2, explanation: "pH=14 indicates strongly basic solution" },
+                { q: "Valency of Nitrogen?", options: ["2", "3", "4", "5"], correct: 1, explanation: "Nitrogen valency = 3" },
+                { q: "Molecular mass of H₂O?", options: ["16", "18", "20", "22"], correct: 1, explanation: "H₂O = 2(1) + 16 = 18 g/mol" },
+                { q: "Atomic number of Potassium?", options: ["18", "19", "20", "21"], correct: 1, explanation: "Potassium (K) has atomic number 19" },
+                { q: "What is Mole?", options: ["Animal", "Unit of mass", "Unit of substance", "Unit of energy"], correct: 2, explanation: "Mole is unit of amount of substance" },
+                { q: "Relative atomic mass of Sulfur?", options: ["16", "32", "64", "128"], correct: 1, explanation: "Relative atomic mass of S = 32" },
+                { q: "What is Lewis dot structure?", options: ["Valence electrons", "All electrons", "Protons", "Neutrons"], correct: 0, explanation: "Lewis structure shows valence electrons" }
+            ],
+            english: [
+                { q: "Choose correct spelling", options: ["Recieve", "Receive", "Resieve", "Recive"], correct: 1, explanation: "Correct: Receive (E before I)" },
+                { q: "Antonym of BRAVE", options: ["Courageous", "Cowardly", "Bold", "Strong"], correct: 1, explanation: "Cowardly is opposite of brave" },
+                { q: "Synonym of HAPPY", options: ["Sad", "Cheerful", "Angry", "Tired"], correct: 1, explanation: "Cheerful means happy" },
+                { q: "Choose correct spelling", options: ["Accommodation", "Accomodation", "Acomodation", "Acommodation"], correct: 0, explanation: "Correct: Accommodation (double M, double C)" },
+                { q: "What is verb?", options: ["Action word", "Noun", "Adjective", "Adverb"], correct: 0, explanation: "Verb is action word" },
+                { q: "Antonym of SMALL", options: ["Tiny", "Large", "Microscopic", "Miniature"], correct: 1, explanation: "Large is opposite of small" },
+                { q: "Correct sentence: 'He go to school'", options: ["He going", "He goes", "He gone", "He went"], correct: 1, explanation: "3rd person singular = 'goes'" },
+                { q: "What is ENIGMA?", options: ["Clear", "Mystery", "Obvious", "Simple"], correct: 1, explanation: "Enigma means puzzle/mystery" },
+                { q: "Synonym of ANGRY", options: ["Happy", "Furious", "Calm", "Peaceful"], correct: 1, explanation: "Furious means very angry" },
+                { q: "Choose correct spelling", options: ["Definately", "Defintely", "Definitely", "Definitly"], correct: 2, explanation: "Correct: Definitely" },
+                { q: "What is adjective?", options: ["Action", "Describing word", "Noun", "Verb"], correct: 1, explanation: "Adjective describes noun" },
+                { q: "Antonym of DARK", options: ["Bright", "Dim", "Gloomy", "Shadowy"], correct: 0, explanation: "Bright is opposite of dark" },
+                { q: "Correct form: 'I __ going to market'", options: ["am", "is", "are", "be"], correct: 0, explanation: "With 'I', use 'am'" },
+                { q: "Synonym of BEAUTIFUL", options: ["Ugly", "Gorgeous", "Plain", "Dull"], correct: 1, explanation: "Gorgeous means beautiful" },
+                { q: "Choose correct spelling", options: ["Occured", "Occurred", "Occured", "Occurered"], correct: 1, explanation: "Correct: Occurred (double R)" },
+                { q: "What is FACILITATE?", options: ["Prevent", "Make easy", "Complicate", "Reduce"], correct: 1, explanation: "Facilitate means to make easy" },
+                { q: "Antonym of INCREASE", options: ["Grow", "Decrease", "Expand", "Extend"], correct: 1, explanation: "Decrease is opposite of increase" },
+                { q: "Correct: 'She has __ to college'", options: ["go", "goes", "gone", "going"], correct: 2, explanation: "With 'has', use past participle 'gone'" },
+                { q: "Synonym of QUICK", options: ["Slow", "Swift", "Lazy", "Sluggish"], correct: 1, explanation: "Swift means quick" },
+                { q: "Choose correct spelling", options: ["Imediate", "Immediate", "Imedeate", "Imidiate"], correct: 1, explanation: "Correct: Immediate" },
+                { q: "What is PERSEVERE?", options: ["Give up", "Continue trying", "Quit", "Stop"], correct: 1, explanation: "Persevere means to keep trying" },
+                { q: "Antonym of HOT", options: ["Warm", "Cold", "Tepid", "Sunny"], correct: 1, explanation: "Cold is opposite of hot" },
+                { q: "Correct: 'They __ playing cricket'", options: ["is", "am", "are", "be"], correct: 2, explanation: "With plural 'they', use 'are'" },
+                { q: "Synonym of WEAK", options: ["Strong", "Feeble", "Powerful", "Robust"], correct: 1, explanation: "Feeble means weak" },
+                { q: "Choose correct spelling", options: ["Separate", "Seperate", "Seperete", "Seperete"], correct: 0, explanation: "Correct: Separate" },
+                { q: "What is DILIGENT?", options: ["Lazy", "Hardworking", "Careless", "Negligent"], correct: 1, explanation: "Diligent means hardworking" },
+                { q: "Antonym of RICH", options: ["Wealthy", "Poor", "Prosperous", "Affluent"], correct: 1, explanation: "Poor is opposite of rich" },
+                { q: "Choose correct spelling", options: ["Wierd", "Weirde", "Weird", "Weired"], correct: 2, explanation: "Correct: Weird" },
+                { q: "What is BENEVOLENT?", options: ["Cruel", "Kind/generous", "Harsh", "Unkind"], correct: 1, explanation: "Benevolent means kind and generous" },
+                { q: "Synonym of SCARED", options: ["Brave", "Fearless", "Terrified", "Confident"], correct: 2, explanation: "Terrified means scared" },
+                { q: "Choose correct spelling", options: ["Succesful", "Sucessful", "Successful", "Successfull"], correct: 2, explanation: "Correct: Successful" }
+            ]
+        };
+
+        let currentSubject = '';
+        let currentQuestionIndex = 0;
+        let answered = false;
+        let userAnswers = {};
+
+        function openSubject(subject) {
+            currentSubject = subject;
+            currentQuestionIndex = 0;
+            answered = false;
+            userAnswers = {};
+            
+            const subjectNames = {
+                maths: 'Mathematics',
+                physics: 'Physics',
+                chemistry: 'Chemistry',
+                english: 'English'
+            };
+            
+            document.getElementById('subjectTitle').textContent = subjectNames[subject];
+            document.getElementById('totalQuestions').textContent = questionsDB[subject].length;
+            document.getElementById('quizModal').classList.remove('hidden');
+            
+            loadQuestion();
         }
+
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.add('hidden');
+            answered = false;
+        }
+
+        function loadQuestion() {
+            const questions = questionsDB[currentSubject];
+            const question = questions[currentQuestionIndex];
+            
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('questionText').textContent = question.q;
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Clear previous options
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            // Add new options
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full p-4 text-left border-2 border-gray-300 rounded-lg option-btn hover:bg-gray-100 transition';
+                button.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+                button.onclick = () => selectAnswer(index, button);
+                optionsContainer.appendChild(button);
+            });
+            
+            // Reset result display
+            document.getElementById('resultMessage').classList.add('hidden');
+            document.getElementById('correctAnswerDisplay').classList.add('hidden');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').disabled = currentQuestionIndex === questions.length - 1;
+            
+            answered = false;
+        }
+
+        function selectAnswer(optionIndex, buttonElement) {
+            if (answered) return;
+            
+            answered = true;
+            const questions = questionsDB[currentSubject];
+            const question = questions[currentQuestionIndex];
+            const allButtons = document.querySelectorAll('.option-btn');
+            
+            // Disable all buttons
+            allButtons.forEach(btn => btn.disabled = true);
+            
+            // Store user answer
+            userAnswers[currentQuestionIndex] = optionIndex;
+            
+            const resultMessage = document.getElementById('resultMessage');
+            const correctAnswerDisplay = document.getElementById('correctAnswerDisplay');
+            
+            if (optionIndex === question.correct) {
+                // Correct answer
+                buttonElement.classList.add('correct-answer');
+                resultMessage.innerHTML = '<div class="result-badge correct-badge">✓ Correct Answer!</div>';
+            } else {
+                // Wrong answer
+                buttonElement.classList.add('wrong-answer');
+                allButtons[question.correct].classList.add('correct-answer');
+                resultMessage.innerHTML = '<div class="result-badge wrong-badge">✗ Wrong Answer</div>';
+                
+                // Show correct answer
+                correctAnswerDisplay.classList.remove('hidden');
+                document.getElementById('correctAnswerText').textContent = question.options[question.correct];
+                document.getElementById('explanationText').textContent = question.explanation;
+            }
+            
+            resultMessage.classList.remove('hidden');
+            
+            // If correct, show explanation too
+            if (optionIndex === question.correct) {
+                correctAnswerDisplay.classList.remove('hidden');
+                document.getElementById('correctAnswerText').textContent = question.options[question.correct];
+                document.getElementById('explanationText').textContent = question.explanation;
+            }
+        }
+
+        function nextQuestion() {
+            const questions = questionsDB[currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('quizModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQuiz();
+            }
+        });
     </script>
 
 </body>
