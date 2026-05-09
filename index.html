@@ -9,6 +9,9 @@
     <style>
         .maritime-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .pyq-card { cursor: pointer; }
+        .pyq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .pyq-answer.show { max-height: 500px; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -76,6 +79,310 @@
             </div>
         </section>
 
+        <!-- MATHEMATICS PYQs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-red-500 pl-4">📐 Mathematics PYQs</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. Find the value of sin(45°) + cos(45°)</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) √2  B) 1  C) 2  D) 0</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: A) √2</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> sin(45°) = 1/√2, cos(45°) = 1/√2, Sum = 1/√2 + 1/√2 = 2/√2 = √2</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Solve: 2x + 5 = 13</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) x=3  B) x=4  C) x=5  D) x=6</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) x=4</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> 2x = 13 - 5 = 8, x = 8/2 = 4</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. Find the area of a circle with radius 7 cm</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 154  B) 308  C) 77  D) 49</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: A) 154</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Area = πr² = 22/7 × 7² = 22/7 × 49 = 154 cm²</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. What is the derivative of x³?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 3x²  B) 3x  C) x²  D) 3</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: A) 3x²</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> d/dx(x³) = 3x² (Power rule)</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Find tan(60°)</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 1  B) √3  C) 1/√3  D) 0</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) √3</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> tan(60°) = sin(60°)/cos(60°) = (√3/2)/(1/2) = √3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHYSICS PYQs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-purple-500 pl-4">⚛️ Physics PYQs</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. A car travels 100 km in 2 hours. What is its average velocity?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 50 km/h  B) 100 km/h  C) 200 km/h  D) 25 km/h</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: A) 50 km/h</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Velocity = Distance/Time = 100 km / 2 hours = 50 km/h</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Newton's Second Law states: F = m × a. What does 'a' represent?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Distance  B) Acceleration  C) Velocity  D) Force</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) Acceleration</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> F = ma, where m is mass and a is acceleration</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. What is the SI unit of force?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Kilogram  B) Meter  C) Newton  D) Joule</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: C) Newton</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> SI unit of force is Newton (N), where 1 N = 1 kg·m/s²</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. Calculate kinetic energy of an object: m = 2 kg, v = 3 m/s</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 6 J  B) 9 J  C) 12 J  D) 18 J</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) 9 J</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> KE = ½mv² = ½ × 2 × 3² = 1 × 9 = 9 Joules</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. What is the acceleration due to gravity on Earth?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 8.8 m/s²  B) 9.8 m/s²  C) 10.8 m/s²  D) 11.8 m/s²</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) 9.8 m/s²</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Standard acceleration due to gravity = 9.8 m/s² (approximately 10 m/s²)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHEMISTRY PYQs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-orange-500 pl-4">🧪 Chemistry PYQs</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. What is the atomic number of Carbon?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 4  B) 6  C) 8  D) 12</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) 6</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Carbon has 6 protons, hence atomic number = 6</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. What is the pH of a neutral solution?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 0  B) 7  C) 14  D) 3.5</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) 7</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> pH = 7 is neutral. pH < 7 is acidic, pH > 7 is basic</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. What is the molecular formula of water?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) H2O  B) H2O2  C) CO2  D) O2</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: A) H2O</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Water consists of 2 hydrogen atoms and 1 oxygen atom</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. What is the valency of Oxygen?</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 1  B) 2  C) 3  D) 4</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) 2</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Oxygen has 6 valence electrons and needs 2 more electrons to complete its octet, so valency = 2</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Balance the equation: C + O2 → CO2</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) 2C + O2 → 2CO2  B) C + 2O2 → CO2  C) C + O2 → CO2  D) 2C + 2O2 → 2CO2</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: C) C + O2 → CO2</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> 1 C atom + 2 O atoms → 1 CO2 molecule (already balanced)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGLISH PYQs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-green-500 pl-4">📚 English PYQs</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q1. Choose the correctly spelled word:</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Acommodation  B) Accommodation  C) Acomodation  D) Accomodation</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) Accommodation</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Correct spelling: Double 'c' and double 'm' = Accommodation</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q2. Find the antonym of "BRAVE":</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Courageous  B) Cowardly  C) Bold  D) Strong</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) Cowardly</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Brave means fearless; Cowardly is the opposite</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q3. Find the synonym of "HAPPY":</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Sad  B) Cheerful  C) Angry  D) Tired</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) Cheerful</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Cheerful means happy or in good spirits</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q4. Correct the sentence: "He go to school every day"</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) He going to school every day  B) He goes to school every day  C) He gone to school every day  D) He went to school every day</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) He goes to school every day</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> With singular subject "He" and present tense, use "goes" (3rd person singular)</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 pyq-card" onclick="toggleAnswer(this)">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Q5. Choose the correct meaning of "ENIGMA":</h3>
+                            <p class="text-gray-600 mb-3"><strong>Options:</strong> A) Clear  B) Mystery  C) Obvious  D) Simple</p>
+                        </div>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </div>
+                    <div class="pyq-answer bg-green-50 p-4 rounded mt-4 border-l-4 border-green-500">
+                        <p><strong>Answer: B) Mystery</strong></p>
+                        <p class="text-sm text-gray-700 mt-2"><strong>Explanation:</strong> Enigma means a mysterious or puzzling person or thing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="mb-16">
             <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-green-500 pl-4">Latest Group Updates</h2>
             <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
@@ -105,6 +412,16 @@
         <p class="opacity-60 mb-4">&copy; 2026 IMU CET Candidate Support</p>
         <p class="text-sm">Helping aspirants reach the horizon. 🚢</p>
     </footer>
+
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.querySelector('.pyq-answer');
+            const chevron = element.querySelector('.fa-chevron-down');
+            answer.classList.toggle('show');
+            chevron.style.transform = answer.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            chevron.style.transition = 'transform 0.3s ease';
+        }
+    </script>
 
 </body>
 </html>
