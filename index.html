@@ -3,450 +3,543 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMU CET 2026 Preparation Hub</title>
+    <title>IMU CET 2026 - Your Compass to a Career at Sea</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .maritime-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
-        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
-        .subject-box { cursor: pointer; transition: all 0.3s ease; }
-        .subject-box:hover { transform: scale(1.05); }
-        .option-btn { transition: all 0.3s ease; }
-        .option-btn:disabled { cursor: not-allowed; }
-        .correct-answer { background-color: #10b981 !important; color: white; }
-        .wrong-answer { background-color: #ef4444 !important; color: white; }
-        .result-badge { font-size: 18px; font-weight: bold; padding: 10px 20px; border-radius: 8px; margin-top: 15px; }
-        .correct-badge { background-color: #d1fae5; color: #065f46; }
-        .wrong-badge { background-color: #fee2e2; color: #7f1d1d; }
+        .ocean-wave { background: linear-gradient(135deg, #0f766e 0%, #115e59 100%); }
+        .card-hover:hover { transform: translateY(-10px); transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .btn-main { background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); transition: all 0.3s ease; }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
+        .countdown-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .glow { text-shadow: 0 0 10px rgba(59, 130, 246, 0.8); }
+        .flip { perspective: 1000px; }
+        .flip-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip:hover .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back { backface-visibility: hidden; }
+        .flip-back { transform: rotateY(180deg); }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-900 text-white font-sans">
 
-    <header class="maritime-gradient text-white py-16 text-center shadow-lg">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">IMU CET 2026 Prep Hub</h1>
-        <p class="text-lg md:text-xl opacity-90 px-4">Your Ultimate Guide to the Merchant Navy Entrance Exam</p>
-        <div class="mt-8">
-            <a href="https://whatsapp.com/channel/0029Vb83Gx3ICVfd9UEdzG1V" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+    <!-- HERO SECTION -->
+    <div class="maritime-gradient min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl">
+            <div class="mb-8">
+                <i class="fas fa-ship text-6xl mb-6 inline-block glow"></i>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                IMU CET 2026
+                <span class="block text-3xl md:text-5xl mt-4 opacity-90">Your Compass to a Career at Sea</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-12 leading-relaxed">
+                Prepare for the Merchant Navy Entrance Exam with curated materials,<br>real-time alerts, and expert guidance from aspirants, for aspirants.
+            </p>
+            
+            <!-- COUNTDOWN TIMER -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-8 mb-12 border border-white border-opacity-20">
+                <h2 class="text-2xl font-bold mb-6 glow">Time Until IMU CET Exam</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="countdown-box rounded-lg p-4">
+                        <div class="text-4xl font-bold text-blue-300" id="days">00</div>
+                        <p class="text-sm uppercase mt-2 opacity-75">Days</p>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4">
+                        <div class="text-4xl font-bold text-green-300" id="hours">00</div>
+                        <p class="text-sm uppercase mt-2 opacity-75">Hours</p>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4">
+                        <div class="text-4xl font-bold text-yellow-300" id="minutes">00</div>
+                        <p class="text-sm uppercase mt-2 opacity-75">Minutes</p>
+                    </div>
+                    <div class="countdown-box rounded-lg p-4">
+                        <div class="text-4xl font-bold text-red-300" id="seconds">00</div>
+                        <p class="text-sm uppercase mt-2 opacity-75">Seconds</p>
+                    </div>
+                </div>
+                
+                <!-- Current Time Display -->
+                <div class="flex justify-center items-center gap-8">
+                    <div>
+                        <p class="text-sm opacity-75">Current Time</p>
+                        <p class="text-2xl font-bold" id="currentTime">00:00:00</p>
+                    </div>
+                    <div>
+                        <p class="text-sm opacity-75">Exam Date</p>
+                        <p class="text-2xl font-bold text-blue-300">May 24, 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN ACTION BUTTONS -->
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <button onclick="location.href='#mocks'" class="btn-main text-white py-4 px-8 rounded-xl font-bold text-lg">
+                    <i class="fas fa-pencil-alt mr-2"></i> Mock Tests
+                </button>
+                <button onclick="location.href='#prepare'" class="btn-main text-white py-4 px-8 rounded-xl font-bold text-lg">
+                    <i class="fas fa-handshake mr-2"></i> Interview Prep
+                </button>
+                <button onclick="location.href='#weightage'" class="btn-main text-white py-4 px-8 rounded-xl font-bold text-lg">
+                    <i class="fas fa-chart-pie mr-2"></i> Subject Guide
+                </button>
+            </div>
+
+            <!-- SECONDARY BUTTON -->
+            <a href="preparation.html" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition">
                 <i class="fab fa-whatsapp mr-2"></i> Join WhatsApp Channel
             </a>
         </div>
-    </header>
+    </div>
 
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-blue-600 pl-4">Exam Overview</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600 card-hover text-center">
-                    <i class="fas fa-clock text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Duration</h3>
-                    <p class="text-gray-600">180 Minutes (3 Hours)</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600 card-hover text-center">
-                    <i class="fas fa-list-ol text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Total Questions</h3>
-                    <p class="text-gray-600">200 Multiple Choice Questions</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600 card-hover text-center">
-                    <i class="fas fa-check-circle text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Marking</h3>
-                    <p class="text-gray-600">+1 Mark | -0.25 Negative</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-16 bg-blue-50 p-8 rounded-2xl">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8">Subject Weightage</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">50</span>
-                    <span class="text-sm text-gray-500 uppercase">Maths</span>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">50</span>
-                    <span class="text-sm text-gray-500 uppercase">Physics</span>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">40</span>
-                    <span class="text-sm text-gray-500 uppercase">English</span>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">20</span>
-                    <span class="text-sm text-gray-500 uppercase">Aptitude</span>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">20</span>
-                    <span class="text-sm text-gray-500 uppercase">Chemistry</span>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow text-center">
-                    <span class="block text-2xl font-bold text-blue-600">20</span>
-                    <span class="text-sm text-gray-500 uppercase">GK</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SUBJECT SELECTION -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-purple-600 pl-4">📚 Practice Questions</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-red-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('maths')">
-                    <i class="fas fa-calculator text-4xl text-red-500 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">Mathematics</h3>
-                    <p class="text-sm text-gray-600">300+ Questions</p>
-                </div>
-                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('physics')">
-                    <i class="fas fa-atom text-4xl text-purple-500 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">Physics</h3>
-                    <p class="text-sm text-gray-600">300+ Questions</p>
-                </div>
-                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-orange-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('chemistry')">
-                    <i class="fas fa-flask text-4xl text-orange-500 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">Chemistry</h3>
-                    <p class="text-sm text-gray-600">300+ Questions</p>
-                </div>
-                <div class="subject-box bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500 text-center cursor-pointer hover:shadow-lg" onclick="openSubject('english')">
-                    <i class="fas fa-book text-4xl text-green-500 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">English</h3>
-                    <p class="text-sm text-gray-600">300+ Questions</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- QUIZ MODAL -->
-        <div id="quizModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
-                <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 flex justify-between items-center">
-                    <h2 id="subjectTitle" class="text-2xl font-bold"></h2>
-                    <button onclick="closeQuiz()" class="text-2xl">&times;</button>
-                </div>
-
-                <div class="p-8">
-                    <!-- Question Counter -->
-                    <div class="mb-6 flex justify-between items-center">
-                        <p class="text-gray-600"><span id="currentQuestion">1</span> / <span id="totalQuestions">10</span></p>
-                        <div class="w-32 bg-gray-200 rounded-full h-2">
-                            <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all" style="width: 0%"></div>
-                        </div>
+    <!-- MOCKS SECTION -->
+    <section id="mocks" class="py-20 px-4 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center glow">
+                <i class="fas fa-pencil-alt mr-3"></i>Mock Tests
+            </h2>
+            <p class="text-center text-gray-300 mb-12">Practice with full-length mock tests designed to simulate the actual IMU CET exam experience</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Mock 1 -->
+                <div class="bg-gray-700 rounded-xl overflow-hidden card-hover border-l-4 border-blue-500">
+                    <div class="bg-blue-600 p-6">
+                        <h3 class="text-2xl font-bold">Full-Length Mock Test</h3>
+                        <p class="opacity-90">200 Questions | 3 Hours | All Subjects</p>
                     </div>
-
-                    <!-- Question -->
-                    <div id="questionContainer" class="mb-8">
-                        <h3 id="questionText" class="text-xl font-bold text-gray-800 mb-6"></h3>
-                        
-                        <!-- Options -->
-                        <div id="optionsContainer" class="space-y-3"></div>
-
-                        <!-- Result Message -->
-                        <div id="resultMessage" class="hidden mt-6"></div>
-
-                        <!-- Correct Answer Display -->
-                        <div id="correctAnswerDisplay" class="hidden mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                            <p class="text-gray-700"><strong>Correct Answer:</strong> <span id="correctAnswerText"></span></p>
-                            <p class="text-gray-700 mt-2"><strong>Explanation:</strong> <span id="explanationText"></span></p>
+                    <div class="p-6">
+                        <div class="space-y-3 mb-6">
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Authentic exam format</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Real-time score analysis</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Detailed explanations</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Performance tracking</p>
                         </div>
+                        <button onclick="location.href='preparation.html'" class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg font-bold transition">
+                            Start Mock Test
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Navigation Buttons -->
-                    <div class="flex justify-between mt-8">
-                        <button id="prevBtn" onclick="previousQuestion()" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 disabled:opacity-50">Previous</button>
-                        <button id="nextBtn" onclick="nextQuestion()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50">Next</button>
+                <!-- Mock 2 -->
+                <div class="bg-gray-700 rounded-xl overflow-hidden card-hover border-l-4 border-purple-500">
+                    <div class="bg-purple-600 p-6">
+                        <h3 class="text-2xl font-bold">Subject-wise Mocks</h3>
+                        <p class="opacity-90">50 Questions | 60 Minutes | Single Subject</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-3 mb-6">
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Focus on weak areas</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Quick assessment tests</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Instant feedback</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Concept reinforcement</p>
+                        </div>
+                        <button onclick="location.href='preparation.html'" class="w-full bg-purple-600 hover:bg-purple-700 py-2 rounded-lg font-bold transition">
+                            Start Subject Tests
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mock 3 -->
+                <div class="bg-gray-700 rounded-xl overflow-hidden card-hover border-l-4 border-green-500">
+                    <div class="bg-green-600 p-6">
+                        <h3 class="text-2xl font-bold">Previous Year Papers</h3>
+                        <p class="opacity-90">Actual exam questions | Solution videos</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-3 mb-6">
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>2023, 2024, 2025 papers</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Video solutions</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Pattern analysis</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Trend identification</p>
+                        </div>
+                        <button onclick="location.href='preparation.html'" class="w-full bg-green-600 hover:bg-green-700 py-2 rounded-lg font-bold transition">
+                            Explore Papers
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mock 4 -->
+                <div class="bg-gray-700 rounded-xl overflow-hidden card-hover border-l-4 border-orange-500">
+                    <div class="bg-orange-600 p-6">
+                        <h3 class="text-2xl font-bold">Speed & Accuracy Drills</h3>
+                        <p class="opacity-90">Quick-fire questions | 15-30 minutes</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-3 mb-6">
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Improve speed</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Maintain accuracy</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Time management</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Daily challenges</p>
+                        </div>
+                        <button onclick="location.href='preparation.html'" class="w-full bg-orange-600 hover:bg-orange-700 py-2 rounded-lg font-bold transition">
+                            Start Drills
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 border-l-4 border-green-500 pl-4">Latest Group Updates</h2>
-            <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                <div class="p-6">
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded mr-3 mt-1 uppercase italic">New</span>
-                            <p class="text-gray-700 font-medium">Free Mentor Calls now available! Fill out the link in the group to book your session.</p>
-                        </li>
-                        <hr>
-                        <li class="flex items-start">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded mr-3 mt-1 uppercase italic">Alert</span>
-                            <p class="text-gray-700 font-medium">Sponsorship interviews for <b>Great Eastern</b> and <b>MSC</b> starting soon. Prepare your Intro!</p>
-                        </li>
-                        <hr>
-                        <li class="flex items-start">
-                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded mr-3 mt-1 uppercase italic">Note</span>
-                            <p class="text-gray-700 font-medium">PDF Notes for Physics (Thermodynamics) and General Knowledge have been uploaded to the channel.</p>
-                        </li>
-                    </ul>
+    <!-- INTERVIEW PREPARATION SECTION -->
+    <section id="prepare" class="py-20 px-4 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center glow">
+                <i class="fas fa-handshake mr-3"></i>Interview Preparation
+            </h2>
+            <p class="text-center text-gray-300 mb-12">Master sponsorship interviews with comprehensive preparation modules</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Personal Introduction -->
+                <div class="bg-gradient-to-br from-blue-900 to-blue-800 rounded-xl overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="text-4xl mb-4"><i class="fas fa-microphone text-blue-300"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">Personal Introduction</h3>
+                        <p class="text-gray-200 mb-6">Learn to craft compelling 60-second introductions that leave a lasting impression on interviewers.</p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Structure your intro</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Key talking points</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Practice sessions</p>
+                        </div>
+                        <button onclick="location.href='#'" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded-lg font-bold transition">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Technical Knowledge -->
+                <div class="bg-gradient-to-br from-green-900 to-green-800 rounded-xl overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="text-4xl mb-4"><i class="fas fa-anchor text-green-300"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">Technical Knowledge</h3>
+                        <p class="text-gray-200 mb-6">Master maritime terminology, ship systems, and navigation concepts that interviewers frequently ask about.</p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Ship systems basics</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Maritime terminology</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Navigation Q&A</p>
+                        </div>
+                        <button onclick="location.href='#'" class="w-full bg-green-500 hover:bg-green-600 py-2 rounded-lg font-bold transition">
+                            Explore Resources
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Group Discussions -->
+                <div class="bg-gradient-to-br from-purple-900 to-purple-800 rounded-xl overflow-hidden card-hover">
+                    <div class="p-8">
+                        <div class="text-4xl mb-4"><i class="fas fa-users text-purple-300"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">Group Discussions</h3>
+                        <p class="text-gray-200 mb-6">Ace group discussions with proven strategies and participation techniques for team-based rounds.</p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>GD strategies</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Mock discussions</p>
+                            <p><i class="fas fa-star text-yellow-400 mr-2"></i>Confidence tips</p>
+                        </div>
+                        <button onclick="location.href='#'" class="w-full bg-purple-500 hover:bg-purple-600 py-2 rounded-lg font-bold transition">
+                            Join Sessions
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer class="bg-gray-900 text-white py-12 text-center">
-        <p class="opacity-60 mb-4">&copy; 2026 IMU CET Candidate Support</p>
-        <p class="text-sm">Helping aspirants reach the horizon. 🚢</p>
+            <!-- Interview Tips Grid -->
+            <div class="bg-gray-800 rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Top Interview Tips</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex gap-4">
+                        <div class="text-3xl text-blue-400 flex-shrink-0">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Research the Company</h4>
+                            <p class="text-gray-300">Know the shipping company's history, fleet, routes, and recent news before the interview.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl text-green-400 flex-shrink-0">
+                            <i class="fas fa-eye-contact"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Maintain Eye Contact</h4>
+                            <p class="text-gray-300">Show confidence and honesty through consistent, professional eye contact during responses.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl text-yellow-400 flex-shrink-0">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Practice Common Questions</h4>
+                            <p class="text-gray-300">Prepare answers for: Why merchant navy? Tell us about yourself? Your strengths and weaknesses?</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl text-red-400 flex-shrink-0">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Avoid Common Mistakes</h4>
+                            <p class="text-gray-300">Don't be overconfident, defensive, or unprepared. Always dress formally and arrive early.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBJECT WEIGHTAGE SECTION -->
+    <section id="weightage" class="py-20 px-4 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center glow">
+                <i class="fas fa-chart-pie mr-3"></i>Subject Weightage Guide
+            </h2>
+            <p class="text-center text-gray-300 mb-12">Understand the exam distribution and allocate your study time wisely</p>
+            
+            <!-- Weightage Overview -->
+            <div class="bg-gray-700 rounded-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-8 text-center">Exam Structure: 200 Questions | 180 Minutes</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- Mathematics -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-red-400 mb-2">50</div>
+                        <p class="text-xl font-bold mb-2">Mathematics</p>
+                        <p class="text-gray-300 mb-4">25% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-red-500 h-3 rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Physics -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-purple-400 mb-2">50</div>
+                        <p class="text-xl font-bold mb-2">Physics</p>
+                        <p class="text-gray-300 mb-4">25% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-purple-500 h-3 rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Chemistry -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-orange-400 mb-2">20</div>
+                        <p class="text-xl font-bold mb-2">Chemistry</p>
+                        <p class="text-gray-300 mb-4">10% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-orange-500 h-3 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <!-- English -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-green-400 mb-2">40</div>
+                        <p class="text-xl font-bold mb-2">English</p>
+                        <p class="text-gray-300 mb-4">20% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-green-500 h-3 rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Aptitude -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-blue-400 mb-2">20</div>
+                        <p class="text-xl font-bold mb-2">Aptitude</p>
+                        <p class="text-gray-300 mb-4">10% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-blue-500 h-3 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <!-- General Knowledge -->
+                    <div class="bg-gray-600 rounded-lg p-6 text-center">
+                        <div class="text-5xl font-bold text-yellow-400 mb-2">20</div>
+                        <p class="text-xl font-bold mb-2">General Knowledge</p>
+                        <p class="text-gray-300 mb-4">10% of total questions</p>
+                        <div class="w-full bg-gray-500 rounded-full h-3">
+                            <div class="bg-yellow-500 h-3 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marking Scheme -->
+                <div class="border-t border-gray-500 pt-8">
+                    <h4 class="text-xl font-bold mb-4">Marking Scheme</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-gray-500 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300">Correct Answer</p>
+                            <p class="text-3xl font-bold text-green-300">+1 Mark</p>
+                        </div>
+                        <div class="bg-gray-500 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300">Wrong Answer</p>
+                            <p class="text-3xl font-bold text-red-300">-0.25 Mark</p>
+                        </div>
+                        <div class="bg-gray-500 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300">Total Score</p>
+                            <p class="text-3xl font-bold text-blue-300">200 Marks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Plan Recommendations -->
+            <div class="bg-gray-700 rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Recommended Study Allocation</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-blue-300">High Priority (60%)</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <span class="text-red-400 font-bold">30%</span>
+                                <span>Mathematics - 50 questions</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-purple-400 font-bold">25%</span>
+                                <span>Physics - 50 questions</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-green-400 font-bold">20%</span>
+                                <span>English - 40 questions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-yellow-300">Medium Priority (40%)</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <span class="text-orange-400 font-bold">10%</span>
+                                <span>Chemistry - 20 questions</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-blue-400 font-bold">10%</span>
+                                <span>Aptitude - 20 questions</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-400 font-bold">10%</span>
+                                <span>General Knowledge - 20 questions</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK STATS SECTION -->
+    <section class="py-20 px-4 maritime-gradient">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 card-hover">
+                    <div class="text-4xl font-bold text-blue-300 mb-2">200</div>
+                    <p class="text-lg opacity-90">Total Questions</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 card-hover">
+                    <div class="text-4xl font-bold text-green-300 mb-2">180</div>
+                    <p class="text-lg opacity-90">Minutes Duration</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 card-hover">
+                    <div class="text-4xl font-bold text-yellow-300 mb-2">6</div>
+                    <p class="text-lg opacity-90">Subjects Covered</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 card-hover">
+                    <div class="text-4xl font-bold text-red-300 mb-2">1000+</div>
+                    <p class="text-lg opacity-90">Practice Questions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="py-20 px-4 bg-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Start Your Preparation?</h2>
+            <p class="text-gray-300 mb-12 text-lg">Join thousands of aspirants preparing for the IMU CET 2026</p>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="preparation.html" class="btn-main text-white py-3 px-6 rounded-lg font-bold inline-block">
+                    <i class="fas fa-book mr-2"></i>Begin Practice
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb83Gx3ICVfd9UEdzG1V" target="_blank" class="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-bold inline-block transition">
+                    <i class="fab fa-whatsapp mr-2"></i>Join WhatsApp
+                </a>
+                <a href="#weightage" class="bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg font-bold inline-block transition">
+                    <i class="fas fa-chart-pie mr-2"></i>View Weightage
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 border-t border-gray-700 py-12 px-4 text-center">
+        <p class="opacity-60 mb-4">&copy; 2026 IMU CET Candidate Support | Your Compass to a Career at Sea</p>
+        <p class="text-sm opacity-50">Helping aspirants reach the horizon. 🚢</p>
     </footer>
 
     <script>
-        // Questions Database
-        const questionsDB = {
-            maths: [
-                { q: "If 2x + 5 = 13, find x", options: ["3", "4", "5", "6"], correct: 1, explanation: "2x = 8, x = 4" },
-                { q: "What is sin(90°)?", options: ["0", "1", "-1", "0.5"], correct: 1, explanation: "sin(90°) = 1" },
-                { q: "Find the area of circle with radius 7", options: ["154", "308", "77", "49"], correct: 0, explanation: "Area = πr² = 22/7 × 49 = 154" },
-                { q: "What is 15% of 200?", options: ["20", "30", "25", "35"], correct: 1, explanation: "15% of 200 = 0.15 × 200 = 30" },
-                { q: "Solve: x² = 16", options: ["±4", "4", "-4", "8"], correct: 0, explanation: "x² = 16, so x = ±4" },
-                { q: "What is cos(0°)?", options: ["0", "1", "-1", "undefined"], correct: 1, explanation: "cos(0°) = 1" },
-                { q: "Find LCM of 12 and 18", options: ["24", "36", "18", "12"], correct: 1, explanation: "LCM(12,18) = 36" },
-                { q: "What is 5⁰?", options: ["0", "1", "5", "25"], correct: 1, explanation: "Any number to power 0 equals 1" },
-                { q: "If a:b = 2:3 and b:c = 4:5, find a:c", options: ["8:15", "6:15", "2:5", "4:5"], correct: 0, explanation: "a:b:c = 8:12:15, so a:c = 8:15" },
-                { q: "Find the value of √144", options: ["10", "11", "12", "13"], correct: 2, explanation: "√144 = 12" },
-                { q: "What is the median of 2,4,6,8,10?", options: ["4", "6", "8", "7"], correct: 1, explanation: "Median of odd numbers is middle value = 6" },
-                { q: "If y = 2x + 3, find y when x = 5", options: ["10", "13", "15", "8"], correct: 1, explanation: "y = 2(5) + 3 = 13" },
-                { q: "What is 20% of 150?", options: ["30", "20", "25", "35"], correct: 0, explanation: "20% of 150 = 0.20 × 150 = 30" },
-                { q: "Find the HCF of 24 and 36", options: ["6", "12", "8", "24"], correct: 1, explanation: "HCF(24,36) = 12" },
-                { q: "What is tan(45°)?", options: ["0", "1", "-1", "undefined"], correct: 1, explanation: "tan(45°) = 1" },
-                { q: "If P = 100, R = 5%, T = 2, find SI", options: ["10", "15", "20", "25"], correct: 0, explanation: "SI = PRT/100 = 100×5×2/100 = 10" },
-                { q: "What is (-5)²?", options: ["-25", "25", "-10", "10"], correct: 1, explanation: "(-5)² = 25" },
-                { q: "Find the value of 3³", options: ["6", "9", "27", "81"], correct: 2, explanation: "3³ = 3×3×3 = 27" },
-                { q: "If 60% = x/100, find x", options: ["0.6", "60", "600", "6"], correct: 1, explanation: "60% = 60/100, so x = 60" },
-                { q: "What is the perimeter of square with side 5?", options: ["10", "15", "20", "25"], correct: 2, explanation: "Perimeter = 4×side = 4×5 = 20" },
-                { q: "Solve: 3x - 7 = 5", options: ["3", "4", "5", "6"], correct: 1, explanation: "3x = 12, x = 4" },
-                { q: "What is log₁₀(100)?", options: ["1", "2", "10", "100"], correct: 1, explanation: "log₁₀(100) = 2 because 10² = 100" },
-                { q: "Find 25% of 80", options: ["15", "20", "25", "30"], correct: 1, explanation: "25% of 80 = 0.25 × 80 = 20" },
-                { q: "If a² + b² = 25 and a=3, find b", options: ["3", "4", "5", "6"], correct: 1, explanation: "9 + b² = 25, b² = 16, b = 4" },
-                { q: "What is the volume of cube with side 3?", options: ["9", "18", "27", "36"], correct: 2, explanation: "Volume = side³ = 3³ = 27" },
-                { q: "Solve: x/5 = 4", options: ["10", "15", "20", "25"], correct: 2, explanation: "x = 4×5 = 20" },
-                { q: "What is 10% of 50?", options: ["5", "10", "15", "20"], correct: 0, explanation: "10% of 50 = 0.10 × 50 = 5" },
-                { q: "Find the sum of angles in triangle", options: ["90°", "180°", "270°", "360°"], correct: 1, explanation: "Sum of angles in triangle = 180°" },
-                { q: "What is cot(45°)?", options: ["0", "1", "-1", "∞"], correct: 1, explanation: "cot(45°) = 1" },
-                { q: "If n = 100, average = 5, find sum", options: ["200", "300", "400", "500"], correct: 2, explanation: "Sum = n × average = 100 × 5 = 500" }
-            ],
-            physics: [
-                { q: "What is SI unit of Force?", options: ["Kg", "Newton", "Joule", "Meter"], correct: 1, explanation: "SI unit of Force is Newton (N)" },
-                { q: "A car travels 100 km in 2 hours. Find average velocity", options: ["25 km/h", "50 km/h", "75 km/h", "100 km/h"], correct: 1, explanation: "Velocity = Distance/Time = 100/2 = 50 km/h" },
-                { q: "What is acceleration due to gravity?", options: ["8 m/s²", "9.8 m/s²", "10.5 m/s²", "11 m/s²"], correct: 1, explanation: "g = 9.8 m/s² (approximately 10 m/s²)" },
-                { q: "Newton's Second Law: F = ?", options: ["m+a", "m-a", "m×a", "m/a"], correct: 2, explanation: "F = m × a (Force = mass × acceleration)" },
-                { q: "What is SI unit of velocity?", options: ["m", "m/s", "m/s²", "m²"], correct: 1, explanation: "SI unit of velocity is m/s" },
-                { q: "Calculate KE with m=2kg, v=3m/s", options: ["6 J", "9 J", "12 J", "18 J"], correct: 1, explanation: "KE = ½mv² = ½×2×9 = 9 Joules" },
-                { q: "What is the unit of work?", options: ["Newton", "Joule", "Watt", "Pascal"], correct: 1, explanation: "Unit of work is Joule (J)" },
-                { q: "A ball is thrown upward. What happens at max height?", options: ["v=0", "a=0", "Both", "Neither"], correct: 0, explanation: "At maximum height, velocity = 0" },
-                { q: "What is SI unit of momentum?", options: ["kg.m", "kg.m/s", "kg/s", "m/s"], correct: 1, explanation: "SI unit of momentum is kg.m/s" },
-                { q: "If object moves in circle, type of motion?", options: ["Linear", "Circular", "Both", "None"], correct: 1, explanation: "Motion in circle is circular motion" },
-                { q: "What is speed of light?", options: ["2×10⁸", "3×10⁸", "4×10⁸", "5×10⁸"], correct: 1, explanation: "Speed of light = 3×10⁸ m/s" },
-                { q: "What is SI unit of Pressure?", options: ["Pascal", "Newton", "Joule", "Bar"], correct: 0, explanation: "SI unit of Pressure is Pascal (Pa)" },
-                { q: "Define: Rate of change of velocity", options: ["Speed", "Velocity", "Acceleration", "Displacement"], correct: 2, explanation: "Acceleration is rate of change of velocity" },
-                { q: "What is the SI unit of Energy?", options: ["Newton", "Joule", "Watt", "Pascal"], correct: 1, explanation: "SI unit of Energy is Joule (J)" },
-                { q: "If v=0, u=10, a=2, find distance", options: ["10", "20", "25", "30"], correct: 2, explanation: "Using v²=u²-2as, 0=100-2×2×s, s=25" },
-                { q: "What is Newton's First Law about?", options: ["Motion", "Inertia", "Force", "Work"], correct: 1, explanation: "First Law: Object remains at rest unless force acts" },
-                { q: "Calculate momentum with m=5kg, v=4m/s", options: ["10", "15", "20", "25"], correct: 2, explanation: "Momentum = m×v = 5×4 = 20 kg.m/s" },
-                { q: "What is SI unit of Frequency?", options: ["Hz", "rpm", "m/s", "m"], correct: 0, explanation: "SI unit of Frequency is Hertz (Hz)" },
-                { q: "Define: Displacement over time", options: ["Speed", "Velocity", "Acceleration", "Distance"], correct: 1, explanation: "Velocity = Displacement/Time" },
-                { q: "What represents elastic collision?", options: ["Energy lost", "Energy conserved", "Speed increases", "Speed decreases"], correct: 1, explanation: "In elastic collision, kinetic energy is conserved" },
-                { q: "SI unit of Temperature?", options: ["Celsius", "Kelvin", "Fahrenheit", "Rankine"], correct: 1, explanation: "SI unit of Temperature is Kelvin (K)" },
-                { q: "What is a conservative force?", options: ["Non-directional", "Work independent of path", "Work dependent on path", "Cannot do work"], correct: 1, explanation: "Conservative force: Work is independent of path" },
-                { q: "Calculate Work if F=20N, d=5m", options: ["50", "75", "100", "150"], correct: 2, explanation: "Work = F×d = 20×5 = 100 Joules" },
-                { q: "What is SI unit of Power?", options: ["Joule", "Newton", "Watt", "Pascal"], correct: 2, explanation: "SI unit of Power is Watt (W)" },
-                { q: "If object thrown horizontally from cliff", options: ["Horizontal motion only", "Vertical motion only", "Both motions", "No motion"], correct: 2, explanation: "Both horizontal and vertical motions occur" },
-                { q: "What is relative velocity?", options: ["Between objects", "Of reference frame", "Independent", "Absolute"], correct: 0, explanation: "Relative velocity is between two objects" },
-                { q: "Ohm's law states: V = ?", options: ["I/R", "I×R", "R/I", "I+R"], correct: 1, explanation: "Ohm's Law: V = I × R (Voltage = Current × Resistance)" },
-                { q: "What is SI unit of Current?", options: ["Volt", "Ampere", "Ohm", "Coulomb"], correct: 1, explanation: "SI unit of Current is Ampere (A)" },
-                { q: "In simple harmonic motion, T = ?", options: ["f", "1/f", "2f", "f²"], correct: 1, explanation: "Period (T) = 1/frequency (f)" },
-                { q: "What is escape velocity from Earth?", options: ["9 km/s", "11.2 km/s", "13 km/s", "15 km/s"], correct: 1, explanation: "Escape velocity from Earth ≈ 11.2 km/s" }
-            ],
-            chemistry: [
-                { q: "What is the atomic number of Carbon?", options: ["4", "6", "8", "12"], correct: 1, explanation: "Carbon has atomic number 6" },
-                { q: "What is pH of neutral solution?", options: ["0", "7", "14", "3.5"], correct: 1, explanation: "pH = 7 is neutral" },
-                { q: "Molecular formula of water?", options: ["H₂O", "H₂O₂", "CO₂", "O₂"], correct: 0, explanation: "Water is H₂O (2 hydrogen, 1 oxygen)" },
-                { q: "What is valency of Oxygen?", options: ["1", "2", "3", "4"], correct: 1, explanation: "Oxygen valency = 2" },
-                { q: "Balanced equation: C + O₂ → CO₂", options: ["2C + O₂ → 2CO₂", "C + 2O₂ → CO₂", "C + O₂ → CO₂", "C + O₂ → C₂O"], correct: 2, explanation: "1C + 1O₂ → 1CO₂ (already balanced)" },
-                { q: "What is Avogadro's number?", options: ["6.022×10²²", "6.022×10²³", "6.022×10²⁴", "6.022×10²⁵"], correct: 1, explanation: "Avogadro's number = 6.022×10²³" },
-                { q: "Atomic number of Nitrogen?", options: ["5", "7", "8", "6"], correct: 1, explanation: "Nitrogen has atomic number 7" },
-                { q: "What is relative atomic mass of Oxygen?", options: ["8", "16", "24", "32"], correct: 1, explanation: "Relative atomic mass of Oxygen = 16" },
-                { q: "pH < 7 indicates?", options: ["Neutral", "Acidic", "Basic", "Salt"], correct: 1, explanation: "pH < 7 is acidic" },
-                { q: "Molecular mass of CO₂?", options: ["28", "32", "44", "60"], correct: 2, explanation: "CO₂ = 12 + 16×2 = 44" },
-                { q: "What is valency of Hydrogen?", options: ["0", "1", "2", "3"], correct: 1, explanation: "Hydrogen valency = 1" },
-                { q: "Atomic number of Helium?", options: ["1", "2", "3", "4"], correct: 1, explanation: "Helium has atomic number 2" },
-                { q: "What is oxidation number of O in O₂?", options: ["0", "+1", "+2", "-2"], correct: 0, explanation: "In O₂, oxidation number of O = 0" },
-                { q: "Electronegativity increases in?", options: ["Down group", "Left to right", "Right to left", "Diagonal"], correct: 1, explanation: "Electronegativity increases left to right" },
-                { q: "What is molar mass of H₂SO₄?", options: ["98", "108", "118", "128"], correct: 0, explanation: "H₂SO₄ = 2(1) + 32 + 4(16) = 98 g/mol" },
-                { q: "Atomic number of Sodium?", options: ["11", "12", "10", "13"], correct: 0, explanation: "Sodium (Na) has atomic number 11" },
-                { q: "What is pH > 7?", options: ["Acidic", "Basic", "Neutral", "Depends"], correct: 1, explanation: "pH > 7 is basic/alkaline" },
-                { q: "Relative atomic mass of Hydrogen?", options: ["1", "2", "3", "4"], correct: 0, explanation: "Relative atomic mass of H = 1" },
-                { q: "What is valency of Carbon?", options: ["1", "2", "3", "4"], correct: 3, explanation: "Carbon valency = 4" },
-                { q: "Molecular mass of NaCl?", options: ["23", "35.5", "58.5", "70"], correct: 2, explanation: "NaCl = 23 + 35.5 = 58.5" },
-                { q: "Atomic number of Chlorine?", options: ["15", "16", "17", "18"], correct: 2, explanation: "Chlorine has atomic number 17" },
-                { q: "What is Isotope?", options: ["Same protons", "Same neutrons", "Different protons", "Different protons, same neutrons"], correct: 3, explanation: "Isotopes have different neutrons but same protons" },
-                { q: "Atomic number of Iron?", options: ["24", "25", "26", "27"], correct: 2, explanation: "Iron (Fe) has atomic number 26" },
-                { q: "What indicates Basic solution?", options: ["pH=0", "pH=7", "pH=14", "pH<7"], correct: 2, explanation: "pH=14 indicates strongly basic solution" },
-                { q: "Valency of Nitrogen?", options: ["2", "3", "4", "5"], correct: 1, explanation: "Nitrogen valency = 3" },
-                { q: "Molecular mass of H₂O?", options: ["16", "18", "20", "22"], correct: 1, explanation: "H₂O = 2(1) + 16 = 18 g/mol" },
-                { q: "Atomic number of Potassium?", options: ["18", "19", "20", "21"], correct: 1, explanation: "Potassium (K) has atomic number 19" },
-                { q: "What is Mole?", options: ["Animal", "Unit of mass", "Unit of substance", "Unit of energy"], correct: 2, explanation: "Mole is unit of amount of substance" },
-                { q: "Relative atomic mass of Sulfur?", options: ["16", "32", "64", "128"], correct: 1, explanation: "Relative atomic mass of S = 32" },
-                { q: "What is Lewis dot structure?", options: ["Valence electrons", "All electrons", "Protons", "Neutrons"], correct: 0, explanation: "Lewis structure shows valence electrons" }
-            ],
-            english: [
-                { q: "Choose correct spelling", options: ["Recieve", "Receive", "Resieve", "Recive"], correct: 1, explanation: "Correct: Receive (E before I)" },
-                { q: "Antonym of BRAVE", options: ["Courageous", "Cowardly", "Bold", "Strong"], correct: 1, explanation: "Cowardly is opposite of brave" },
-                { q: "Synonym of HAPPY", options: ["Sad", "Cheerful", "Angry", "Tired"], correct: 1, explanation: "Cheerful means happy" },
-                { q: "Choose correct spelling", options: ["Accommodation", "Accomodation", "Acomodation", "Acommodation"], correct: 0, explanation: "Correct: Accommodation (double M, double C)" },
-                { q: "What is verb?", options: ["Action word", "Noun", "Adjective", "Adverb"], correct: 0, explanation: "Verb is action word" },
-                { q: "Antonym of SMALL", options: ["Tiny", "Large", "Microscopic", "Miniature"], correct: 1, explanation: "Large is opposite of small" },
-                { q: "Correct sentence: 'He go to school'", options: ["He going", "He goes", "He gone", "He went"], correct: 1, explanation: "3rd person singular = 'goes'" },
-                { q: "What is ENIGMA?", options: ["Clear", "Mystery", "Obvious", "Simple"], correct: 1, explanation: "Enigma means puzzle/mystery" },
-                { q: "Synonym of ANGRY", options: ["Happy", "Furious", "Calm", "Peaceful"], correct: 1, explanation: "Furious means very angry" },
-                { q: "Choose correct spelling", options: ["Definately", "Defintely", "Definitely", "Definitly"], correct: 2, explanation: "Correct: Definitely" },
-                { q: "What is adjective?", options: ["Action", "Describing word", "Noun", "Verb"], correct: 1, explanation: "Adjective describes noun" },
-                { q: "Antonym of DARK", options: ["Bright", "Dim", "Gloomy", "Shadowy"], correct: 0, explanation: "Bright is opposite of dark" },
-                { q: "Correct form: 'I __ going to market'", options: ["am", "is", "are", "be"], correct: 0, explanation: "With 'I', use 'am'" },
-                { q: "Synonym of BEAUTIFUL", options: ["Ugly", "Gorgeous", "Plain", "Dull"], correct: 1, explanation: "Gorgeous means beautiful" },
-                { q: "Choose correct spelling", options: ["Occured", "Occurred", "Occured", "Occurered"], correct: 1, explanation: "Correct: Occurred (double R)" },
-                { q: "What is FACILITATE?", options: ["Prevent", "Make easy", "Complicate", "Reduce"], correct: 1, explanation: "Facilitate means to make easy" },
-                { q: "Antonym of INCREASE", options: ["Grow", "Decrease", "Expand", "Extend"], correct: 1, explanation: "Decrease is opposite of increase" },
-                { q: "Correct: 'She has __ to college'", options: ["go", "goes", "gone", "going"], correct: 2, explanation: "With 'has', use past participle 'gone'" },
-                { q: "Synonym of QUICK", options: ["Slow", "Swift", "Lazy", "Sluggish"], correct: 1, explanation: "Swift means quick" },
-                { q: "Choose correct spelling", options: ["Imediate", "Immediate", "Imedeate", "Imidiate"], correct: 1, explanation: "Correct: Immediate" },
-                { q: "What is PERSEVERE?", options: ["Give up", "Continue trying", "Quit", "Stop"], correct: 1, explanation: "Persevere means to keep trying" },
-                { q: "Antonym of HOT", options: ["Warm", "Cold", "Tepid", "Sunny"], correct: 1, explanation: "Cold is opposite of hot" },
-                { q: "Correct: 'They __ playing cricket'", options: ["is", "am", "are", "be"], correct: 2, explanation: "With plural 'they', use 'are'" },
-                { q: "Synonym of WEAK", options: ["Strong", "Feeble", "Powerful", "Robust"], correct: 1, explanation: "Feeble means weak" },
-                { q: "Choose correct spelling", options: ["Separate", "Seperate", "Seperete", "Seperete"], correct: 0, explanation: "Correct: Separate" },
-                { q: "What is DILIGENT?", options: ["Lazy", "Hardworking", "Careless", "Negligent"], correct: 1, explanation: "Diligent means hardworking" },
-                { q: "Antonym of RICH", options: ["Wealthy", "Poor", "Prosperous", "Affluent"], correct: 1, explanation: "Poor is opposite of rich" },
-                { q: "Choose correct spelling", options: ["Wierd", "Weirde", "Weird", "Weired"], correct: 2, explanation: "Correct: Weird" },
-                { q: "What is BENEVOLENT?", options: ["Cruel", "Kind/generous", "Harsh", "Unkind"], correct: 1, explanation: "Benevolent means kind and generous" },
-                { q: "Synonym of SCARED", options: ["Brave", "Fearless", "Terrified", "Confident"], correct: 2, explanation: "Terrified means scared" },
-                { q: "Choose correct spelling", options: ["Succesful", "Sucessful", "Successful", "Successfull"], correct: 2, explanation: "Correct: Successful" }
-            ]
-        };
-
-        let currentSubject = '';
-        let currentQuestionIndex = 0;
-        let answered = false;
-        let userAnswers = {};
-
-        function openSubject(subject) {
-            currentSubject = subject;
-            currentQuestionIndex = 0;
-            answered = false;
-            userAnswers = {};
+        // Countdown Timer Function
+        function updateCountdown() {
+            // Exam date: May 24, 2026 at 09:00 AM
+            const examDate = new Date('2026-05-24T09:00:00').getTime();
             
-            const subjectNames = {
-                maths: 'Mathematics',
-                physics: 'Physics',
-                chemistry: 'Chemistry',
-                english: 'English'
-            };
-            
-            document.getElementById('subjectTitle').textContent = subjectNames[subject];
-            document.getElementById('totalQuestions').textContent = questionsDB[subject].length;
-            document.getElementById('quizModal').classList.remove('hidden');
-            
-            loadQuestion();
-        }
-
-        function closeQuiz() {
-            document.getElementById('quizModal').classList.add('hidden');
-            answered = false;
-        }
-
-        function loadQuestion() {
-            const questions = questionsDB[currentSubject];
-            const question = questions[currentQuestionIndex];
-            
-            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-            document.getElementById('questionText').textContent = question.q;
-            
-            // Update progress bar
-            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            
-            // Clear previous options
-            const optionsContainer = document.getElementById('optionsContainer');
-            optionsContainer.innerHTML = '';
-            
-            // Add new options
-            question.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'w-full p-4 text-left border-2 border-gray-300 rounded-lg option-btn hover:bg-gray-100 transition';
-                button.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
-                button.onclick = () => selectAnswer(index, button);
-                optionsContainer.appendChild(button);
-            });
-            
-            // Reset result display
-            document.getElementById('resultMessage').classList.add('hidden');
-            document.getElementById('correctAnswerDisplay').classList.add('hidden');
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
-            document.getElementById('nextBtn').disabled = currentQuestionIndex === questions.length - 1;
-            
-            answered = false;
-        }
-
-        function selectAnswer(optionIndex, buttonElement) {
-            if (answered) return;
-            
-            answered = true;
-            const questions = questionsDB[currentSubject];
-            const question = questions[currentQuestionIndex];
-            const allButtons = document.querySelectorAll('.option-btn');
-            
-            // Disable all buttons
-            allButtons.forEach(btn => btn.disabled = true);
-            
-            // Store user answer
-            userAnswers[currentQuestionIndex] = optionIndex;
-            
-            const resultMessage = document.getElementById('resultMessage');
-            const correctAnswerDisplay = document.getElementById('correctAnswerDisplay');
-            
-            if (optionIndex === question.correct) {
-                // Correct answer
-                buttonElement.classList.add('correct-answer');
-                resultMessage.innerHTML = '<div class="result-badge correct-badge">✓ Correct Answer!</div>';
-            } else {
-                // Wrong answer
-                buttonElement.classList.add('wrong-answer');
-                allButtons[question.correct].classList.add('correct-answer');
-                resultMessage.innerHTML = '<div class="result-badge wrong-badge">✗ Wrong Answer</div>';
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = examDate - now;
                 
-                // Show correct answer
-                correctAnswerDisplay.classList.remove('hidden');
-                document.getElementById('correctAnswerText').textContent = question.options[question.correct];
-                document.getElementById('explanationText').textContent = question.explanation;
-            }
-            
-            resultMessage.classList.remove('hidden');
-            
-            // If correct, show explanation too
-            if (optionIndex === question.correct) {
-                correctAnswerDisplay.classList.remove('hidden');
-                document.getElementById('correctAnswerText').textContent = question.options[question.correct];
-                document.getElementById('explanationText').textContent = question.explanation;
-            }
+                // Calculate time units
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Update countdown display
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+                
+                // If countdown is finished
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                }
+            }, 1000);
         }
 
-        function nextQuestion() {
-            const questions = questionsDB[currentSubject];
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                loadQuestion();
-            }
+        // Update Current Time
+        function updateCurrentTime() {
+            setInterval(() => {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                document.getElementById('currentTime').innerText = `${hours}:${minutes}:${seconds}`;
+            }, 1000);
         }
 
-        function previousQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                loadQuestion();
-            }
-        }
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateCountdown();
+            updateCurrentTime();
+        });
 
-        // Close modal when clicking outside
-        document.getElementById('quizModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeQuiz();
-            }
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 
